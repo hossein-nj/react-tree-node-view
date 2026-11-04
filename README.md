@@ -84,15 +84,9 @@ export default function CustomColorExample() {
 
 The `defaultColor` prop customizes the primary color throughout the tree view, including buttons, icons, active states, hover effects, and focus indicators. It works with both light and dark themes.
 
-### Selectable Mode
+## Selectable mode
 
 Set `type="selectable"` to enable checkbox-based node selection.
-
-<p align="center">
-  <img src="./images/selectable.png" alt="Selectable Tree View" width="75%" />
-</p>
-
-## Selectable mode
 
 ```tsx
 <TreeView
@@ -105,6 +99,10 @@ Set `type="selectable"` to enable checkbox-based node selection.
 ```
 
 Selecting a child also includes its ancestors, matching the serialized `TreeItem[]` format used by the component.
+
+<p align="center">
+  <img src="./images/selectable.png" alt="Selectable Tree View" width="75%" />
+</p>
 
 ## Custom icons, labels, and drop colors
 
