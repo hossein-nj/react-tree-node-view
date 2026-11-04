@@ -65,10 +65,24 @@ Click an editable title to rename it. Press Enter or move focus away to save; pr
 
 Use the `defaultColor` prop to customize the primary color across the entire component.
 
+```tsx
+export default function CustomColorExample() {
+  return (
+    <TreeView
+      defaultItems={categories}
+      defaultColor="#8b5cf6"
+      theme="light"
+    />
+  );
+}
+```
+
 <p align="center">
   <img src="./images/Light-color.png" alt="Light Theme with Custom Color" width="49%" />
   <img src="./images/Dark-color.png" alt="Dark Theme with Custom Color" width="49%" />
 </p>
+
+The `defaultColor` prop customizes the primary color throughout the tree view, including buttons, icons, active states, hover effects, and focus indicators. It works with both light and dark themes.
 
 ### Selectable Mode
 
@@ -170,7 +184,3 @@ npm run typecheck
 npm run build
 npm run pack:check
 ```
-
-## License
-
-MIT © Hossein Najafi
