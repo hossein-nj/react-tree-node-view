@@ -1,6 +1,6 @@
 # react-tree-node
 
-<p align="center">
+<div align="center">
 
 ![React](https://img.shields.io/badge/React-%3E%3D18.2.0-61dafb?style=flat-square&logo=react&logoColor=20232a)
 ![TypeScript](https://img.shields.io/badge/TypeScript-first-3178c6?style=flat-square&logo=typescript&logoColor=white)
@@ -8,7 +8,7 @@
 ![Monthly Downloads](https://img.shields.io/npm/dm/react-tree-node?style=flat-square&logo=npm&color=blue)
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-tree-node?style=flat-square&color=10b981)
 
-</p>
+</div>
 
 A lightweight, standalone React tree view with selectable nodes, inline title editing, add/delete actions, and native drag-and-drop reordering. It has no runtime dependencies besides React and uses inline SVG icons.
 
