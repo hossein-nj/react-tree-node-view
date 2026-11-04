@@ -108,7 +108,7 @@ Selecting a child also includes its ancestors, matching the serialized `TreeItem
   <img src="./images/selectable.png" alt="Selectable Tree View" width="75%" />
 </p>
 
-### Custom icons and labels
+## Custom icons and labels
 
 Every built-in icon can be replaced with a `ReactNode`. Omitted icons continue to use the package's inline SVG defaults.
 
@@ -138,7 +138,7 @@ The `labels` prop allows you to customize individual text labels. English defaul
 
 The `direction` prop supports both `ltr` and `rtl` layouts, controlling indentation, text alignment, icon placement, actions, and drop indicators.
 
-### Drop indicator colors
+## Drop indicator colors
 
 Customize the colors of drag-and-drop indicators using the `dropIndicatorColors` prop. It accepts an object with three optional properties:
 
@@ -158,7 +158,6 @@ Customize the colors of drag-and-drop indicators using the `dropIndicatorColors`
 
 Each color can be customized independently. Omitted values fall back to the package's default colors.
 ```
-
 
 ## API
 
@@ -189,7 +188,7 @@ All `TreeView` props are optional. When `items` or `checkedItems` is provided, t
 | `emptyMessage` | `ReactNode` | Optional replacement for the default `"No categories found"` message when there are no nodes. |
 | `disabled` | `boolean` | Disables editing, selection, and drag actions when `true`. Defaults to `false`. |
 
-### Checked items
+## Checked items
 
 Use the `checkedItems` prop to control the selected items externally. When provided, the checked state is controlled by the parent component. Otherwise, the component manages the checked state internally.
 
@@ -203,7 +202,7 @@ const [checkedItems, setCheckedItems] = useState<TreeItem[]>([]);
 />
 ```
 
-### Selection change callback
+## Selection change callback
 
 Use `onCheckedChange` to receive the updated list of checked items whenever the selection changes.
 
@@ -216,7 +215,7 @@ Use `onCheckedChange` to receive the updated list of checked items whenever the 
 />
 ```
 
-### Title change callback
+## Title change callback
 
 Use `onTitleChange` to track inline title edits. It receives the updated node and its new title.
 
@@ -230,7 +229,7 @@ Use `onTitleChange` to track inline title edits. It receives the updated node an
 />
 ```
 
-### Delete callback
+## Delete callback
 
 Use `onDelete` to be notified whenever a category is deleted. It receives the deleted node.
 
@@ -243,7 +242,7 @@ Use `onDelete` to be notified whenever a category is deleted. It receives the de
 />
 ```
 
-### Loading state
+## Loading state
 
 Set `loading` to `true` to display the built-in loading skeleton while your categories are being loaded. It defaults to `false`.
 
@@ -254,7 +253,7 @@ Set `loading` to `true` to display the built-in loading skeleton while your cate
 />
 ```
 
-### Empty state message
+## Empty state message
 
 Use `emptyMessage` to customize the content displayed when there are no categories. It accepts any `ReactNode`, so you can provide text, icons, or custom components. The default message is `"No categories found"`.
 
