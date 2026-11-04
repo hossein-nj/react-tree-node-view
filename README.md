@@ -166,14 +166,6 @@ All `TreeView` props are optional. When `items` or `checkedItems` is provided, t
 | `emptyMessage` | `ReactNode` | Optional replacement for the default `"No categories found"` message when there are no nodes. |
 | `disabled` | `boolean` | Disables editing, selection, and drag actions when `true`. Defaults to `false`. |
 
-The component uses the light theme by default. Use the `theme` prop to switch the complete component to dark mode. Theme styles are scoped to the tree view and do not alter host application styles:
-
-```tsx
-<TreeView items={initialItems} theme="dark" />
-<TreeView items={initialItems} theme="light" />
-<TreeView items={initialItems} defaultColor="#0f766e" />
-```
-
 ## Development
 
 ```bash
