@@ -25,7 +25,6 @@ npm install react-tree-node
 The component imports its scoped stylesheet automatically. You can also import it explicitly when your bundler handles CSS entry points:
 
 ```tsx
-import { TreeView } from "react-tree-node";
 import "react-tree-node/styles.css";
 ```
 
@@ -46,7 +45,13 @@ const initialItems: TreeNode[] = [
 export default function Example() {
   const [items, setItems] = useState(initialItems);
 
-  return <TreeView items={items} onChange={setItems} inputName="categories" />;
+  return (
+    <TreeView 
+      items={items}
+      onChange={setItems} 
+      inputName="categories"
+    />
+  );
 }
 ```
 
@@ -92,7 +97,6 @@ Set `type="selectable"` to enable checkbox-based node selection.
 <TreeView
   type="selectable"
   defaultItems={initialItems}
-  inputName="selectedCategories"
   defaultChecked={[{ _id: "books", title: "Books" }]}
   onCheckedChange={(checked) => console.log(checked)}
 />
@@ -104,7 +108,7 @@ Selecting a child also includes its ancestors, matching the serialized `TreeItem
   <img src="./images/selectable.png" alt="Selectable Tree View" width="75%" />
 </p>
 
-## Custom icons, labels, and drop colors
+### Custom icons and labels
 
 Every built-in icon can be replaced with a `ReactNode`. Omitted icons continue to use the package's inline SVG defaults.
 
@@ -126,16 +130,35 @@ const icons: TreeViewIcons = {
     defaultCategoryTitle: "Untitled category",
     before: "Above",
   }}
+  direction="ltr"
+/>
+```
+
+The `labels` prop allows you to customize individual text labels. English defaults are used for any omitted labels. Dynamic accessibility labels also support the `{title}` placeholder, for example `addChild: "Add {title} below"`.
+
+The `direction` prop supports both `ltr` and `rtl` layouts, controlling indentation, text alignment, icon placement, actions, and drop indicators.
+
+### Drop indicator colors
+
+Customize the colors of drag-and-drop indicators using the `dropIndicatorColors` prop. It accepts an object with three optional properties:
+
+- `before`: The color displayed when dropping a category above another category.
+- `inside`: The color displayed when dropping a category inside another category.
+- `after`: The color displayed when dropping a category below another category.
+
+```tsx
+<TreeView
+  defaultItems={initialItems}
   dropIndicatorColors={{
     before: "#0ea5e9",
     inside: "#f59e0b",
     after: "#22c55e",
   }}
-  direction="ltr"
 />
+
+Each color can be customized independently. Omitted values fall back to the package's default colors.
 ```
 
-`labels` is resolved as English defaults, then custom overrides. Individual labels can be overridden, and dynamic accessibility labels support the `{title}` placeholder, for example `addChild: "Add {title} below"`. The `direction` prop controls indentation, text alignment, icon placement, actions, and drop indicators for both LTR and RTL layouts.
 
 ## API
 
@@ -165,6 +188,89 @@ All `TreeView` props are optional. When `items` or `checkedItems` is provided, t
 | `loading` | `boolean` | Shows the loading skeleton when `true`. Defaults to `false`. |
 | `emptyMessage` | `ReactNode` | Optional replacement for the default `"No categories found"` message when there are no nodes. |
 | `disabled` | `boolean` | Disables editing, selection, and drag actions when `true`. Defaults to `false`. |
+
+### Checked items
+
+Use the `checkedItems` prop to control the selected items externally. When provided, the checked state is controlled by the parent component. Otherwise, the component manages the checked state internally.
+
+```tsx
+const [checkedItems, setCheckedItems] = useState<TreeItem[]>([]);
+
+<TreeView
+  defaultItems={initialItems}
+  checkedItems={checkedItems}
+  onCheckedChange={setCheckedItems}
+/>
+```
+
+### Selection change callback
+
+Use `onCheckedChange` to receive the updated list of checked items whenever the selection changes.
+
+```tsx
+<TreeView
+  defaultItems={initialItems}
+  onCheckedChange={(items) => {
+    console.log("Selected items:", items);
+  }}
+/>
+```
+
+### Title change callback
+
+Use `onTitleChange` to track inline title edits. It receives the updated node and its new title.
+
+```tsx
+<TreeView
+  defaultItems={initialItems}
+  onTitleChange={(node, title) => {
+    console.log("Updated node:", node);
+    console.log("New title:", title);
+  }}
+/>
+```
+
+### Delete callback
+
+Use `onDelete` to be notified whenever a category is deleted. It receives the deleted node.
+
+```tsx
+<TreeView
+  defaultItems={initialItems}
+  onDelete={(node) => {
+    console.log("Deleted category:", node);
+  }}
+/>
+```
+
+### Loading state
+
+Set `loading` to `true` to display the built-in loading skeleton while your categories are being loaded. It defaults to `false`.
+
+```tsx
+<TreeView
+  defaultItems={initialItems}
+  loading={isLoading}
+/>
+```
+
+### Empty state message
+
+Use `emptyMessage` to customize the content displayed when there are no categories. It accepts any `ReactNode`, so you can provide text, icons, or custom components. The default message is `"No categories found"`.
+
+```tsx
+<TreeView
+  defaultItems={[]}
+  emptyMessage={
+    <div>
+      <span>No categories yet.</span>
+      <button onClick={() => console.log("Add category")}>
+        Create your first category
+      </button>
+    </div>
+  }
+/>
+```
 
 ## Development
 
