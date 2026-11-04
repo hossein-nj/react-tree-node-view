@@ -1,0 +1,67 @@
+{
+  "name": "react-tree-node",
+  "version": "1.0.0",
+  "description": "A lightweight, standalone React tree view with selection, inline editing, and drag-and-drop reordering.",
+  "type": "module",
+  "main": "./dist/react-tree-node.cjs",
+  "module": "./dist/react-tree-node.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/react-tree-node.js",
+      "require": "./dist/react-tree-node.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "react",
+    "tree-view",
+    "treeview",
+    "tree-component",
+    "nested-list",
+    "drag-and-drop",
+    "typescript",
+    "inline-editing",
+    "category-tree"
+  ],
+  "homepage": "https://github.com/hossein-nj/react-tree-node#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hossein-nj/react-tree-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hossein-nj/react-tree-node/issues"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

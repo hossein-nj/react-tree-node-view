@@ -1,0 +1,186 @@
+.treeview-root {
+  --treeview-border: #e5e7eb;
+  --treeview-surface: #ffffff;
+  --treeview-surface-muted: #f8fafc;
+  --treeview-text: #172033;
+  --treeview-muted: #718096;
+  --treeview-primary: #171717;
+  --treeview-primary-soft: color-mix(in srgb, var(--treeview-primary) 10%, transparent);
+  --treeview-danger: #dc2626;
+  --treeview-shadow: rgba(15, 23, 42, 0.08);
+  --treeview-drop-before: #3b82f6;
+  --treeview-drop-inside: #f59e0b;
+  --treeview-drop-after: #10b981;
+  --treeview-toolbar-background: var(--treeview-surface);
+  --treeview-shell-background: color-mix(in srgb, var(--treeview-surface) 92%, transparent);
+  --treeview-checkmark: #ffffff;
+  --treeview-indent: 32px;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--treeview-text);
+  color-scheme: light;
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: color 160ms ease;
+}
+
+.treeview-root[data-theme="dark"] {
+  --treeview-border: rgba(255, 255, 255, 0.11);
+  --treeview-surface: #111111;
+  --treeview-surface-muted: rgba(255, 255, 255, 0.045);
+  --treeview-text: #f0f2f7;
+  --treeview-muted: #9ba3b5;
+  --treeview-primary: #ffffff;
+  --treeview-primary-soft: color-mix(in srgb, var(--treeview-primary) 14%, transparent);
+  --treeview-shadow: rgba(0, 0, 0, 0.2);
+  --treeview-toolbar-background: #000000;
+  --treeview-shell-background: #111111;
+  --treeview-checkmark: #171717;
+  color-scheme: dark;
+}
+
+.treeview-root *,
+.treeview-root *::before,
+.treeview-root *::after { box-sizing: border-box; }
+.treeview-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; line-height: 0; }
+.treeview-icon > svg { display: block; max-width: 100%; max-height: 100%; }
+.treeview-expander .treeview-icon { width: 1rem; height: 1rem; }
+.treeview-drag-handle .treeview-icon { width: 1rem; height: 1rem; }
+.treeview-folder .treeview-icon { width: 1.125rem; height: 1.125rem; }
+.treeview-checkmark .treeview-icon { width: 0.75rem; height: 0.75rem; }
+.treeview-action .treeview-icon { width: 0.8125rem; height: 0.8125rem; }
+.treeview-add-root .treeview-icon { width: 1rem; height: 1rem; }
+.treeview-empty-icon .treeview-icon { width: 2.375rem; height: 2.375rem; }
+
+.treeview-toolbar {
+  display: flex;
+  min-height: 62px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--treeview-border);
+  border-bottom: 0;
+  border-radius: 1rem 1rem 0 0;
+  background: var(--treeview-toolbar-background);
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.treeview-add-root,
+.treeview-action,
+.treeview-expander,
+.treeview-title { border: 0; font: inherit; }
+
+.treeview-add-root {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--treeview-primary) 22%, transparent);
+  border-radius: 0.75rem;
+  color: var(--treeview-primary);
+  background: color-mix(in srgb, var(--treeview-primary) 10%, transparent);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.treeview-add-root:hover:not(:disabled) { background: color-mix(in srgb, var(--treeview-primary) 16%, transparent); transform: translateY(-1px); }
+.treeview-add-root:disabled,
+.treeview-action:disabled,
+.treeview-expander:disabled,
+.treeview-title:disabled { cursor: not-allowed; opacity: 0.55; }
+
+.treeview-guide { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; color: var(--treeview-muted); font-size: 0.6875rem; }
+.treeview-guide span { display: inline-flex; align-items: center; gap: 0.35rem; white-space: nowrap; }
+.treeview-guide-dot { width: 0.45rem; height: 0.45rem; border-radius: 999px; box-shadow: 0 0 7px currentColor; }
+.treeview-guide-dot.is-before { color: var(--treeview-drop-before); background: currentColor; }
+.treeview-guide-dot.is-inside { color: var(--treeview-drop-inside); background: currentColor; }
+.treeview-guide-dot.is-after { color: var(--treeview-drop-after); background: currentColor; }
+
+.treeview-shell {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--treeview-border);
+  border-radius: 1rem;
+  background: var(--treeview-shell-background);
+  box-shadow: 0 12px 35px var(--treeview-shadow);
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.treeview-toolbar + .treeview-shell { border-radius: 0 0 1rem 1rem; }
+.treeview-list { display: flex; min-height: 4rem; flex-direction: column; gap: 0.25rem; padding: 0.5rem; }
+.treeview-node { min-width: 0; }
+.treeview-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  cursor: default;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, opacity 160ms ease;
+}
+.treeview-row:hover { border-color: var(--treeview-border); background: var(--treeview-surface-muted); }
+.treeview-row.is-dragging { opacity: 0.3; }
+.treeview-row.is-drag-before { border-color: color-mix(in srgb, var(--treeview-drop-before) 32%, transparent); background: color-mix(in srgb, var(--treeview-drop-before) 9%, transparent); }
+.treeview-row.is-drag-before::before,
+.treeview-row.is-drag-after::after { position: absolute; inset-inline: 0.5rem; height: 3px; border-radius: 99px; content: ""; box-shadow: 0 0 12px currentColor; }
+.treeview-row.is-drag-before::before { top: -1px; color: var(--treeview-drop-before); background: currentColor; }
+.treeview-row.is-drag-after { border-color: color-mix(in srgb, var(--treeview-drop-after) 32%, transparent); background: color-mix(in srgb, var(--treeview-drop-after) 9%, transparent); }
+.treeview-row.is-drag-after::after { bottom: -1px; color: var(--treeview-drop-after); background: currentColor; }
+.treeview-row.is-drag-inside { border-color: color-mix(in srgb, var(--treeview-drop-inside) 42%, transparent); background: color-mix(in srgb, var(--treeview-drop-inside) 11%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--treeview-drop-inside) 16%, transparent); }
+
+.treeview-expander,
+.treeview-expander-spacer { display: inline-flex; width: 1.75rem; height: 1.75rem; flex: 0 0 auto; align-items: center; justify-content: center; border-radius: 0.55rem; }
+.treeview-expander { color: var(--treeview-muted); background: transparent; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+.treeview-expander:hover:not(:disabled) { color: var(--treeview-primary); background: var(--treeview-primary-soft); }
+.treeview-drag-handle { display: inline-flex; width: 1.5rem; height: 1.5rem; flex: 0 0 auto; align-items: center; justify-content: center; color: var(--treeview-muted); cursor: grab; opacity: 0.45; transition: opacity 160ms ease, color 160ms ease; }
+.treeview-row:hover .treeview-drag-handle { color: var(--treeview-primary); opacity: 1; }
+.treeview-drag-handle:active { cursor: grabbing; }
+.treeview-folder { display: inline-flex; flex: 0 0 auto; color: #e5a93d; }
+.treeview-folder.is-open { color: var(--treeview-primary); }
+
+.treeview-checkbox-wrap { position: relative; display: inline-flex; flex: 0 0 auto; align-items: center; cursor: pointer; }
+.treeview-checkbox { width: 1rem; height: 1rem; margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; border: 1px solid var(--treeview-border); border-radius: 0.35rem; background: var(--treeview-surface); cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease; }
+.treeview-checkbox:checked { border-color: var(--treeview-primary); background: var(--treeview-primary); }
+.treeview-checkmark { position: absolute; inset: 0; display: grid; place-items: center; color: var(--treeview-checkmark); pointer-events: none; transform: scale(0); transition: transform 160ms ease; }
+.treeview-checkbox:checked + .treeview-checkmark { transform: scale(1); }
+
+.treeview-title { min-width: 0; flex: 1; overflow: hidden; padding: 0.3rem 0; color: var(--treeview-text); background: transparent; text-align: start; text-overflow: ellipsis; white-space: nowrap; font-size: 0.875rem; font-weight: 600; line-height: 1.5rem; transition: color 160ms ease, background-color 160ms ease; }
+.treeview-title.is-editable { cursor: text; }
+.treeview-title.is-editable:hover { color: var(--treeview-primary); }
+.treeview-title-input { min-width: 5rem; flex: 1; height: 2rem; padding: 0.25rem 0.5rem; border: 1px solid var(--treeview-primary); border-radius: 0.45rem; outline: 2px solid color-mix(in srgb, var(--treeview-primary) 18%, transparent); color: var(--treeview-text); background: var(--treeview-surface); font: inherit; }
+.treeview-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 0.25rem; }
+.treeview-action { display: inline-flex; width: 1.5rem; height: 1.5rem; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 0.5rem; cursor: pointer; opacity: 0; transition: opacity 160ms ease, background-color 160ms ease, transform 160ms ease; }
+.treeview-row:hover .treeview-action, .treeview-action:focus-visible { opacity: 1; }
+.treeview-action:hover:not(:disabled) { transform: scale(1.06); }
+.treeview-action-add { border-color: color-mix(in srgb, var(--treeview-primary) 20%, transparent); color: var(--treeview-primary); background: var(--treeview-primary-soft); }
+.treeview-action-delete { border-color: rgba(220, 38, 38, 0.2); color: var(--treeview-danger); background: rgba(220, 38, 38, 0.08); }
+.treeview-child-count { flex: 0 0 auto; padding: 0.1rem 0.5rem; border-radius: 999px; color: var(--treeview-muted); background: var(--treeview-surface-muted); font-size: 0.625rem; font-weight: 600; }
+.treeview-children {
+  margin-block-start: 0.25rem;
+  overflow: visible;
+}
+.treeview-children-content {
+  display: flex;
+  min-block-size: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow: visible;
+}
+.treeview-children[aria-hidden="true"] { pointer-events: none; user-select: none; }
+.treeview-loading { display: flex; min-height: 11rem; flex-direction: column; gap: 0.5rem; padding: 0.75rem; }
+.treeview-skeleton-row { height: 2.75rem; border-radius: 0.75rem; background: linear-gradient(90deg, var(--treeview-surface-muted) 20%, var(--treeview-primary-soft) 50%, var(--treeview-surface-muted) 80%); background-size: 220% 100%; animation: treeview-shimmer 1.4s ease-in-out infinite; }
+.treeview-empty { display: flex; min-height: 11rem; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; color: var(--treeview-muted); text-align: center; }
+.treeview-empty-icon { color: var(--treeview-muted); opacity: 0.35; }
+.treeview-empty p { margin: 0; font-size: 0.8125rem; }
+
+@keyframes treeview-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+@media (max-width: 640px) { .treeview-root { --treeview-indent: 26px; } .treeview-toolbar { align-items: flex-start; flex-direction: column; } .treeview-guide { gap: 0.55rem; } }
+@media (prefers-reduced-motion: reduce) { .treeview-root * { transition: none !important; animation: none !important; } }
