@@ -48,8 +48,7 @@ export default function Example() {
   return (
     <TreeView 
       items={items}
-      onChange={setItems} 
-      inputName="categories"
+      onChange={setItems}
     />
   );
 }
@@ -168,7 +167,6 @@ All `TreeView` props are optional. When `items` or `checkedItems` is provided, t
 | `items` | `TreeNode[]` | Optional controlled tree data. If omitted, the component uses `defaultItems` and internal state. |
 | `defaultItems` | `TreeNode[]` | Optional initial data for an uncontrolled tree. Defaults to `[]`. |
 | `type` | `"editable" \| "selectable"` | Enables editing and drag actions or checkboxes. Defaults to `"editable"`. |
-| `inputName` | `string` | Optional form field name. Adds a hidden field containing the tree or selected items as JSON when provided. |
 | `onChange` | `(items: TreeNode[]) => void` | Optional callback called after tree data changes. |
 | `defaultChecked` | `TreeItem[]` | Optional initial checked items in selectable mode. Defaults to `[]`. |
 | `checkedItems` | `TreeItem[]` | Optional controlled checked items. If omitted, checked state is managed internally. |
@@ -176,7 +174,6 @@ All `TreeView` props are optional. When `items` or `checkedItems` is provided, t
 | `onTitleChange` | `(node, title) => void` | Optional callback called after an inline title edit. |
 | `onDelete` | `(node) => void` | Optional callback called after a node is removed. |
 | `height` | `number` | Optional maximum tree height in pixels. Applied as the shell's `max-height`; overflow is scrollable when needed. |
-| `style` | `React.CSSProperties` | Optional inline styles applied to the tree shell. |
 | `className` | `string` | Optional class name applied to the component root. |
 | `defaultColor` | `string` | Optional CSS color used as the primary color in both themes, including the Add Category button, icons, active states, hover states, and focus indicators. |
 | `theme` | `"light" \| "dark"` | Complete component theme. Defaults to `"light"`. |

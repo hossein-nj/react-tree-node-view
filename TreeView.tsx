@@ -160,8 +160,6 @@ export type TreeViewProps = {
   items?: TreeNode[];
   /** Initial tree data for an uncontrolled tree. */
   defaultItems?: TreeNode[];
-  /** Form field name. The tree or checked items are serialized into this field. */
-  inputName?: string;
   /** Editable trees support add, delete, inline rename, and drag-and-drop. */
   type?: TreeViewMode;
   defaultChecked?: TreeItem[];
@@ -171,7 +169,6 @@ export type TreeViewProps = {
   onTitleChange?: (node: TreeNode, title: string) => void;
   onDelete?: (node: TreeNode) => void;
   height?: number;
-  style?: CSSProperties;
   className?: string;
   /** CSS color used as the primary color in both themes. */
   defaultColor?: string;
@@ -612,8 +609,8 @@ function TreeNodeItem({
 }
 
 export function TreeView({
-  items, defaultItems = [], inputName, type = "editable", defaultChecked = [], checkedItems, onChange, onCheckedChange, onTitleChange, onDelete,
-  height, style, className, defaultColor, theme = "light", direction = "ltr", icons = {}, labels = {}, dropIndicatorColors = {}, loading = false, emptyMessage, disabled = false,
+  items, defaultItems = [], type = "editable", defaultChecked = [], checkedItems, onChange, onCheckedChange, onTitleChange, onDelete,
+  height, className, defaultColor, theme = "light", direction = "ltr", icons = {}, labels = {}, dropIndicatorColors = {}, loading = false, emptyMessage, disabled = false,
 }: TreeViewProps) {
   const [internalItems, setInternalItems] = useState<TreeNode[]>(defaultItems);
   const [internalCheckedItems, setInternalCheckedItems] = useState<TreeItem[]>(defaultChecked);
@@ -749,7 +746,7 @@ export function TreeView({
       <button aria-label={mergedLabels.addCategory} className="treeview-add-root" disabled={disabled} onClick={addRootNode} title={mergedLabels.addCategory} type="button"><IconSlot>{icons.add ?? <PlusIcon size={16} />}</IconSlot> {mergedLabels.addCategory}</button>
       <div className="treeview-guide" aria-label={mergedLabels.dragAndDropGuide}><span><i className="treeview-guide-dot is-before" />{mergedLabels.before}</span><span><i className="treeview-guide-dot is-inside" />{mergedLabels.inside}</span><span><i className="treeview-guide-dot is-after" />{mergedLabels.after}</span></div>
     </div>}
-    <div className="treeview-shell" style={{ ...style, ...(height === undefined ? {} : { maxHeight: height }) }}>
+    <div className="treeview-shell" style={height === undefined ? undefined : { maxHeight: height }}>
       {loading ? <div className="treeview-loading" aria-busy="true" aria-label={mergedLabels.loading}>{Array.from({ length: 6 }, (_, index) => <div className="treeview-skeleton-row" key={index} />)}</div> : treeData.length === 0 ? <div className="treeview-empty"><span className="treeview-empty-icon"><IconSlot>{icons.empty ?? <EmptyFolderIcon size={38} />}</IconSlot></span><p>{emptyMessage ?? mergedLabels.empty}</p></div> : <div className="treeview-list">{treeData.map((node) => <TreeNodeItem
         key={node.key}
         node={node}
@@ -782,7 +779,6 @@ export function TreeView({
         onDrop={handleDrop}
       />)}</div>}
     </div>
-    {inputName && <input name={inputName} type="hidden" value={JSON.stringify(type === "selectable" ? selectedItems : treeData)} readOnly />}
   </div>;
 }
 
