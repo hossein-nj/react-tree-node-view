@@ -10,7 +10,7 @@
 
 </div>
 
-A lightweight, standalone React tree view with selectable nodes, inline title editing, add/delete actions, and native drag-and-drop reordering. It has no runtime dependencies besides React and uses inline SVG icons.
+A lightweight, dependency-free React tree view with selection, inline editing, drag-and-drop, and node management.
 
 <div align="center">
   <img src="./images/react-tree-node-demo.gif" alt="React Tree Node Demo" width="100%" />
