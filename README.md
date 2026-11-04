@@ -1,9 +1,20 @@
 # react-tree-node
 
+<p align="center">
+
 ![React](https://img.shields.io/badge/React-%3E%3D18.2.0-61dafb?style=flat-square&logo=react&logoColor=20232a)
 ![TypeScript](https://img.shields.io/badge/TypeScript-first-3178c6?style=flat-square&logo=typescript&logoColor=white)
+![NPM Version](https://img.shields.io/npm/v/react-tree-node?style=flat-square&logo=npm&color=cb3837)
+![Monthly Downloads](https://img.shields.io/npm/dm/react-tree-node?style=flat-square&logo=npm&color=blue)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-tree-node?style=flat-square&color=10b981)
+
+</p>
 
 A lightweight, standalone React tree view with selectable nodes, inline title editing, add/delete actions, and native drag-and-drop reordering. It has no runtime dependencies besides React and uses inline SVG icons.
+
+<div align="center">
+  <img src="./images/react-tree-node-demo.gif" alt="React Tree Node Demo" width="100%" />
+</div>
 
 ## Installation
 
@@ -40,6 +51,32 @@ export default function Example() {
 ```
 
 Click an editable title to rename it. Press Enter or move focus away to save; press Escape to cancel. Drag rows before, inside, or after another row to reorder them.
+
+## Preview
+
+### Light & Dark Themes
+
+<p align="center">
+  <img src="./images/Light.png" alt="Light Theme" width="49%" />
+  <img src="./images/Dark.png" alt="Dark Theme" width="49%" />
+</p>
+
+### Custom Colors
+
+Use the `defaultColor` prop to customize the primary color across the entire component.
+
+<p align="center">
+  <img src="./images/Light-color.png" alt="Light Theme with Custom Color" width="49%" />
+  <img src="./images/Dark-color.png" alt="Dark Theme with Custom Color" width="49%" />
+</p>
+
+### Selectable Mode
+
+Set `type="selectable"` to enable checkbox-based node selection.
+
+<p align="center">
+  <img src="./images/selectable.png" alt="Selectable Tree View" width="75%" />
+</p>
 
 ## Selectable mode
 
