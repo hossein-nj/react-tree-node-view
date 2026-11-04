@@ -1,16 +1,16 @@
 {
-  "name": "react-tree-node",
+  "name": "react-tree-node-view",
   "version": "1.0.0",
   "description": "A lightweight, standalone React tree view with selection, inline editing, and drag-and-drop reordering.",
   "type": "module",
-  "main": "./dist/react-tree-node.cjs",
-  "module": "./dist/react-tree-node.js",
+  "main": "./dist/react-tree-node-view.cjs",
+  "module": "./dist/react-tree-node-view.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/react-tree-node.js",
-      "require": "./dist/react-tree-node.cjs"
+      "import": "./dist/react-tree-node-view.js",
+      "require": "./dist/react-tree-node-view.cjs"
     },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
@@ -41,13 +41,13 @@
     "inline-editing",
     "category-tree"
   ],
-  "homepage": "https://github.com/hossein-nj/react-tree-node#readme",
+  "homepage": "https://github.com/hossein-nj/react-tree-node-view#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hossein-nj/react-tree-node.git"
+    "url": "https://github.com/hossein-nj/react-tree-node-view.git"
   },
   "bugs": {
-    "url": "https://github.com/hossein-nj/react-tree-node/issues"
+    "url": "https://github.com/hossein-nj/react-tree-node-view/issues"
   },
   "peerDependencies": {
     "react": ">=18.2.0"

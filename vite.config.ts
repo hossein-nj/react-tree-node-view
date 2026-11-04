@@ -6,7 +6,7 @@ export default defineConfig({
     lib: {
       entry: "index.ts",
       formats: ["es", "cjs"],
-      fileName: (format) => format === "es" ? "react-tree-node.js" : "react-tree-node.cjs",
+      fileName: (format) => format === "es" ? "react-tree-node-view.js" : "react-tree-node-view.cjs",
       cssFileName: "styles",
     },
     rollupOptions: {

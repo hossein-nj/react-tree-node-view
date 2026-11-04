@@ -1,38 +1,38 @@
-# react-tree-node
+# react-tree-node-view
 
 <div align="center">
 
 ![React](https://img.shields.io/badge/React-%3E%3D18.2.0-61dafb?style=flat-square&logo=react&logoColor=20232a)
 ![TypeScript](https://img.shields.io/badge/TypeScript-first-3178c6?style=flat-square&logo=typescript&logoColor=white)
-![NPM Version](https://img.shields.io/npm/v/react-tree-node?style=flat-square&logo=npm&color=cb3837)
-![Monthly Downloads](https://img.shields.io/npm/dm/react-tree-node?style=flat-square&logo=npm&color=blue)
-![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-tree-node?style=flat-square&color=10b981)
+![NPM Version](https://img.shields.io/npm/v/react-tree-node-view?style=flat-square&logo=npm&color=cb3837)
+![Monthly Downloads](https://img.shields.io/npm/dm/react-tree-node-view?style=flat-square&logo=npm&color=blue)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/react-tree-node-view?style=flat-square&color=10b981)
 
 </div>
 
 A lightweight, dependency-free React tree view with selection, inline editing, drag-and-drop, and node management.
 
 <div align="center">
-  <img src="./images/react-tree-node-demo.gif" alt="React Tree Node Demo" width="100%" />
+  <img src="./images/react-tree-node-view-demo.gif" alt="React Tree Node Demo" width="100%" />
 </div>
 
 ## Installation
 
 ```bash
-npm install react-tree-node
+npm install react-tree-node-view
 ```
 
 The component imports its scoped stylesheet automatically. You can also import it explicitly when your bundler handles CSS entry points:
 
 ```tsx
-import "react-tree-node/styles.css";
+import "react-tree-node-view/styles.css";
 ```
 
 ## Quick start
 
 ```tsx
 import { useState } from "react";
-import { TreeView, type TreeNode } from "react-tree-node";
+import { TreeView, type TreeNode } from "react-tree-node-view";
 
 const initialItems: TreeNode[] = [
   {
@@ -112,7 +112,7 @@ Selecting a child also includes its ancestors, matching the serialized `TreeItem
 Every built-in icon can be replaced with a `ReactNode`. Omitted icons continue to use the package's inline SVG defaults.
 
 ```tsx
-import { TreeView, type TreeViewIcons } from "react-tree-node";
+import { TreeView, type TreeViewIcons } from "react-tree-node-view";
 
 const icons: TreeViewIcons = {
   folder: <span aria-hidden="true">📁</span>,
